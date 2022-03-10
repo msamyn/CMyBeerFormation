@@ -1,0 +1,13 @@
+.countdown-number {
+  font-size: 2rem;
+  width: 300px;
+  text-align: center;
+  background-color: lightcyan;
+  padding: 2rem;
+}
+
+.countdown-button {
+  width: 200px;
+  font-size: 2rem;
+  padding: 1rem;
+}
