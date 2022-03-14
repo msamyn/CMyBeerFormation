@@ -1,12 +1,13 @@
+import { Typography } from "@mui/material";
 import { string, node, bool } from "prop-types";
-
-import { Title, Subtitle } from "./styles";
 
 export default function Screen({ title, navigation, isHome = false }) {
   return (
     <>
-      <Title>CMyBeer</Title>
-      <Subtitle isHome={isHome}>{title}</Subtitle>
+      <Typography variant="h1">
+        CMyBeer<sup>©</sup>
+      </Typography>
+      <Typography variant="h2">{title}</Typography>
       <nav>{navigation}</nav>
     </>
   );
