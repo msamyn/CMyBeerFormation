@@ -10,24 +10,19 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { object } from "prop-types";
+import { object, number, string } from "prop-types";
 import React from "react";
 import useQuantity from "../useQuantity";
 
-export default function Beer({ beer }) {
+export default function Beer({ id, name, image, price, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity(0);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image={beer.image}
-        alt={beer.name}
-      />
+      <CardMedia component="img" height="140" image={image} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {beer.name}
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -38,16 +33,16 @@ export default function Beer({ beer }) {
         <FormControl>
           <InputLabel id="quantity-label">Quantité</InputLabel>
           <Select
-            size="small"
-            variant="standard"
             labelId="quantity-label"
             value={quantity}
             label="Quantité"
             onChange={handleChange}
+            size="small"
+            variant="standard"
           >
-            {new Array(6).fill().map((_, i) => (
+            {new Array(maxQuantity + 1).fill().map((_, i) => (
               <MenuItem key={i} value={i}>
-                {i !== 0 ? `${i} - ${(i * beer.price).toFixed(2)}€` : "Aucune"}
+                {i !== 0 ? `${i} - ${(i * price).toFixed(2)}€` : "Aucune"}
               </MenuItem>
             ))}
           </Select>
@@ -59,5 +54,8 @@ export default function Beer({ beer }) {
 }
 
 Beer.propTypes = {
-  beer: object.isRequired,
+  maxQuantity: number,
+  name: string,
+  image: string,
+  price: number,
 };

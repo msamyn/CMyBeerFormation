@@ -1,3 +1,4 @@
+import { BedtimeRounded } from "@mui/icons-material";
 import { Grid } from "@mui/material";
 import Beer from "../Beer";
 import Screen from "../Screen";
@@ -16,7 +17,12 @@ export default function HomeScreen() {
       <Grid container spacing={4} justifyContent="space-between">
         {beers.map((beer) => (
           <Grid key={beer.id} item xs={3}>
-            <Beer beer={beer} />
+            <Beer
+              id={beer.id}
+              name={beer.name}
+              image={beer.image}
+              price={beer.price}
+            />
           </Grid>
         ))}
       </Grid>
