@@ -1,30 +1,35 @@
-import { Grid } from "@mui/material";
+import { Grid, CircularProgress } from "@mui/material";
 import Beer from "../Beer";
+import beersFetch from "../lib/beersFetch";
+import responseToJson from "../lib/responseToJson";
 import Screen from "../Screen";
+import React from "react";
 
 export default function HomeScreen() {
-  const beers = new Array(20).fill(null).map((_, i) => ({
-    id: i,
-    name: `beer ${i}`,
-    price: 10.5,
-    image:
-      "https://brewerydb-images.s3.amazonaws.com/beer/vxzuxc/upload_5kPh7z-contentAwareMedium.png",
-  }));
+  const [beers, setBeers] = React.useState([]);
+  const [isLoading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    setLoading(true);
+    beersFetch("/beers")
+      .then(responseToJson)
+      .then(setBeers)
+      .then(() => setLoading(false));
+  }, [setBeers]);
 
   return (
     <Screen>
-      <Grid container spacing={4} justifyContent="space-between">
-        {beers.map((beer) => (
-          <Grid key={beer.id} item xs={3}>
-            <Beer
-              id={beer.id}
-              name={beer.name}
-              image={beer.image}
-              price={beer.price}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <Grid container spacing={4} justifyContent="space-between">
+          {beers.map((beer) => (
+            <Grid key={beer.id} item xs={3}>
+              <Beer beer={beer} maxQuantity={Math.floor(Math.random() * 10)} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Screen>
   );
 }

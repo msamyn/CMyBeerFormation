@@ -10,28 +10,23 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { number, string } from "prop-types";
+import { number, string, shape } from "prop-types";
 import React from "react";
 import useQuantity from "../useQuantity";
 
-export default function Beer({ id, name, image, price, maxQuantity = 5 }) {
+export default function Beer({ beer, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity(0);
+  const { name, description, imageUri, price } = beer;
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia component="img" height="140" image={image} alt={name} />
+      <CardMedia component="img" height="140" image={imageUri} alt={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Abner (1867-1953) is our great grandfather; Hill Farmstead Brewery
-          rests upon the land that was once home to him and his fourteen
-          children. In his honor, this Imperial IPA is dutifully crafted from
-          American malted barley, a plethora of American hops, our ale yeast and
-          water from Abner’s well. It is unfiltered, naturally carbonated, and
-          double dry hopped. Aromatic and flowery, bursting with notes of citrus
-          and pine, this is the ale that I dream to have shared with Abner.
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
@@ -47,7 +42,9 @@ export default function Beer({ id, name, image, price, maxQuantity = 5 }) {
           >
             {new Array(maxQuantity + 1).fill().map((_, i) => (
               <MenuItem key={i} value={i}>
-                {i !== 0 ? `${i} - ${(i * price).toFixed(2)}€` : "Aucune"}
+                {i !== 0
+                  ? `${i} - ${(i * Number(price)).toFixed(2)}€`
+                  : "Aucune"}
               </MenuItem>
             ))}
           </Select>
@@ -60,7 +57,11 @@ export default function Beer({ id, name, image, price, maxQuantity = 5 }) {
 
 Beer.propTypes = {
   maxQuantity: number,
-  name: string,
-  image: string,
-  price: number,
+  beer: shape({
+    id: string,
+    name: string,
+    price: string,
+    description: string,
+    imageUri: string,
+  }),
 };
