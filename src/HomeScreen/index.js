@@ -1,4 +1,3 @@
-import { BedtimeRounded } from "@mui/icons-material";
 import { Grid } from "@mui/material";
 import Beer from "../Beer";
 import Screen from "../Screen";
