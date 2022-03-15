@@ -15,7 +15,7 @@ export default function HomeScreen() {
     <Screen>
       <Grid container spacing={4} justifyContent="space-between">
         {beers.map((beer) => (
-          <Grid key={beer.id} item xs={2}>
+          <Grid key={beer.id} item xs={3}>
             <Beer beer={beer} />
           </Grid>
         ))}
