@@ -39,6 +39,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
             onChange={handleChange}
             size="small"
             variant="standard"
+            disabled={maxQuantity === 0}
           >
             {new Array(maxQuantity + 1).fill().map((_, i) => (
               <MenuItem key={i} value={i}>

@@ -1,12 +1,14 @@
-import React from "react";
-import { responseToJson, beersFetch } from "../index";
+import { useQuery } from "react-query";
+import beersFetch from "../../beersFetch";
 
-export default function useBeers(initialState = []) {
-  const [beers, setBeers] = React.useState(initialState);
+export default function useBeers() {
+  // const { isLoading, error, data } = useQuery("beers", () =>
+  //   fetch(
+  //     "https://my-json-server.typicode.com/msamyn/CMyBeerFormation/beers"
+  //   ).then(responseToJson)
+  // );
 
-  React.useEffect(() => {
-    beersFetch("/beers").then(responseToJson).then(setBeers);
-  }, [setBeers]);
+  const { isLoading, error, data } = useQuery("beers", beersFetch("/beers"));
 
-  return [beers];
+  return { isLoading, error, beers: data };
 }
