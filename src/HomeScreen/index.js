@@ -7,8 +7,10 @@ import Filter from "../Filter";
 import Screen from "../Screen";
 
 export default function HomeScreen() {
-  const [value, handleChange] = useSelect("");
-  const { isLoading, beers } = useBeers({ categoryId: value });
+  const [value, setValue] = useSelect();
+  const { isLoading, beers } = useBeers({
+    categoryId: value !== "" ? value : undefined,
+  });
 
   if (isLoading) {
     return (
@@ -20,7 +22,7 @@ export default function HomeScreen() {
 
   return (
     <Screen>
-      <Filter value={value} handleChange={handleChange} />
+      <Filter value={value} handleChange={setValue} />
       <Grid container spacing={4} justifyContent="space-between">
         {beers.map((beer) => (
           <Grid key={beer.id} item xs={3}>

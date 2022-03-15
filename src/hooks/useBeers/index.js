@@ -5,7 +5,7 @@ import cMyBeerFetch from "../../cMyBeerFetch";
 export default function useBeers({ categoryId } = {}) {
   const beersUrl = queryString.stringifyUrl({
     url: "/beers",
-    query: { categoryId: categoryId === "" ? undefined : categoryId },
+    query: { categoryId },
   });
 
   const { isLoading, error, data } = useQuery(
