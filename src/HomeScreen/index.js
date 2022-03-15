@@ -1,24 +1,25 @@
+import { Grid } from "@mui/material";
 import Beer from "../Beer";
 import Screen from "../Screen";
 
 export default function HomeScreen() {
-  const beers = [
-    { id: 1, name: "beer 1", price: 10.5 },
-    { id: 2, name: "beer 2", price: 9.25 },
-    { id: 3, name: "beer 3", price: 12.4 },
-    { id: 4, name: "beer 4", price: 6.5 },
-    { id: 5, name: "beer 5", price: 25.5 },
-  ];
+  const beers = new Array(20).fill(null).map((_, i) => ({
+    id: i,
+    name: `beer ${i}`,
+    price: 10.5,
+    image:
+      "https://brewerydb-images.s3.amazonaws.com/beer/vxzuxc/upload_5kPh7z-contentAwareMedium.png",
+  }));
 
   return (
     <Screen>
-      <ul>
+      <Grid container spacing={4} justifyContent="space-between">
         {beers.map((beer) => (
-          <li key={beer.id}>
+          <Grid key={beer.id} item xs={2}>
             <Beer beer={beer} />
-          </li>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
     </Screen>
   );
 }
