@@ -1,6 +1,4 @@
-import BeerMinitature from "../BeerMiniature";
-import beersFetch from "../lib/beersFetch";
-import responseToJson from "../lib/responseToJson";
+import Beer from "../Beer";
 import Screen from "../Screen";
 
 export default function HomeScreen() {
@@ -17,7 +15,7 @@ export default function HomeScreen() {
       <ul>
         {beers.map((beer) => (
           <li key={beer.id}>
-            <BeerMinitature beer={beer} />
+            <Beer beer={beer} />
           </li>
         ))}
       </ul>

@@ -1,6 +1,6 @@
 import { object } from "prop-types";
 
-export default function BeerMinitature({ beer }) {
+export default function Beer({ beer }) {
   return (
     <>
       <div>Name : {beer.name}</div>
@@ -9,6 +9,6 @@ export default function BeerMinitature({ beer }) {
   );
 }
 
-BeerMinitature.propTypes = {
+Beer.propTypes = {
   beer: object.isRequired,
 };
