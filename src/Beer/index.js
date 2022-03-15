@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { number, string, shape } from "prop-types";
 import React from "react";
-import useQuantity from "../useQuantity";
+import { useQuantity } from "../hooks";
 
 export default function Beer({ beer, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity(0);

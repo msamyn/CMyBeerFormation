@@ -4,7 +4,7 @@ import Beer from "../Beer";
 import Screen from "../Screen";
 import React from "react";
 
-import useBeers from "../useBeers";
+import { useBeers } from "../hooks";
 
 export default function HomeScreen() {
   const [beers] = useBeers();

@@ -1,6 +1,5 @@
 import React from "react";
-import beersFetch from "../lib/beersFetch";
-import responseToJson from "../lib/responseToJson";
+import { responseToJson, beersFetch } from "../index";
 
 export default function useBeers(initialState = []) {
   const [beers, setBeers] = React.useState(initialState);

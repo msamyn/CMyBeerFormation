@@ -1,6 +1,6 @@
 import { number } from "prop-types";
 import React from "react";
-import useCounter from "../useCounter";
+import { useCounter } from "../hooks";
 
 import "./styles.css";
 
