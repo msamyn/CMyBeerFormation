@@ -2,7 +2,7 @@ import responseToJson from "../responseToJson";
 
 const apiUrl = "//my-json-server.typicode.com/msamyn/CMyBeerFormation";
 
-export default function beersFetch(route, options = {}) {
+export default function cMyBeerFetch(route, options = {}) {
   return () =>
     fetch(`${apiUrl}${route}`, {
       ...options,

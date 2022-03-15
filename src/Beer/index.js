@@ -15,7 +15,7 @@ import React from "react";
 import { useQuantity } from "../hooks";
 
 export default function Beer({ beer, maxQuantity = 5 }) {
-  const [quantity, handleChange] = useQuantity(0);
+  const [quantity, handleChange] = useQuantity("");
   const { name, description, imageUri, price } = beer;
 
   return (
@@ -40,12 +40,11 @@ export default function Beer({ beer, maxQuantity = 5 }) {
             size="small"
             variant="standard"
             disabled={maxQuantity === 0}
+            sx={{ width: 120 }}
           >
             {new Array(maxQuantity + 1).fill().map((_, i) => (
               <MenuItem key={i} value={i}>
-                {i !== 0
-                  ? `${i} - ${(i * Number(price)).toFixed(2)}€`
-                  : "Aucune"}
+                {`${i + 1} - ${((i + 1) * Number(price)).toFixed(2)}€`}
               </MenuItem>
             ))}
           </Select>
