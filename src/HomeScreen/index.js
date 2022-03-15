@@ -1,27 +1,19 @@
 import { Grid, CircularProgress } from "@mui/material";
+
 import Beer from "../Beer";
-import beersFetch from "../lib/beersFetch";
-import responseToJson from "../lib/responseToJson";
 import Screen from "../Screen";
 import React from "react";
 
-export default function HomeScreen() {
-  const [beers, setBeers] = React.useState([]);
-  const [isLoading, setLoading] = React.useState(true);
+import useBeers from "../useBeers";
 
-  React.useEffect(() => {
-    setLoading(true);
-    beersFetch("/beers")
-      .then(responseToJson)
-      .then(setBeers)
-      .then(() => setLoading(false));
-  }, [setBeers]);
+export default function HomeScreen() {
+  const [beers] = useBeers();
+
+  const hasBeers = beers.length > 0;
 
   return (
     <Screen>
-      {isLoading ? (
-        <CircularProgress />
-      ) : (
+      {hasBeers > 0 ? (
         <Grid container spacing={4} justifyContent="space-between">
           {beers.map((beer) => (
             <Grid key={beer.id} item xs={3}>
@@ -29,6 +21,8 @@ export default function HomeScreen() {
             </Grid>
           ))}
         </Grid>
+      ) : (
+        <CircularProgress />
       )}
     </Screen>
   );
