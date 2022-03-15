@@ -10,7 +10,7 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { object, number, string } from "prop-types";
+import { number, string } from "prop-types";
 import React from "react";
 import useQuantity from "../useQuantity";
 
@@ -25,8 +25,13 @@ export default function Beer({ id, name, image, price, maxQuantity = 5 }) {
           {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          Abner (1867-1953) is our great grandfather; Hill Farmstead Brewery
+          rests upon the land that was once home to him and his fourteen
+          children. In his honor, this Imperial IPA is dutifully crafted from
+          American malted barley, a plethora of American hops, our ale yeast and
+          water from Abner’s well. It is unfiltered, naturally carbonated, and
+          double dry hopped. Aromatic and flowery, bursting with notes of citrus
+          and pine, this is the ale that I dream to have shared with Abner.
         </Typography>
       </CardContent>
       <CardActions>
