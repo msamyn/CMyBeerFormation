@@ -1,10 +1,4 @@
-import {
-  CircularProgress,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { useCategories, useSelect } from "../hooks";
 
 export default function Filter() {
