@@ -11,7 +11,7 @@ export default function useBeers({ categoryId } = {}) {
   });
 
   const { isLoading, error, data } = useQuery(
-    ["beers", categoryId],
+    ["beers", cleanCategory],
     cMyBeerFetch(beersUrl)
   );
 
