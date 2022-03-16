@@ -3,9 +3,11 @@ import queryString from "query-string";
 import cMyBeerFetch from "../../cMyBeerFetch";
 
 export default function useBeers({ categoryId } = {}) {
+  const cleanCategory =
+    categoryId === "" || categoryId === "0" ? undefined : categoryId;
   const beersUrl = queryString.stringifyUrl({
     url: "/beers",
-    query: { categoryId },
+    query: { categoryId: cleanCategory },
   });
 
   const { isLoading, error, data } = useQuery(

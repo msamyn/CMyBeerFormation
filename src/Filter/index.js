@@ -15,7 +15,8 @@ export default function Filter({ value, handleChange }) {
         onChange={handleChange}
         disabled={isLoading}
       >
-        {categories?.map(({ id, name }, i) => (
+        <MenuItem value="0">Toutes </MenuItem>
+        {categories?.map(({ id, name }) => (
           <MenuItem key={id} value={id}>
             {name}
           </MenuItem>

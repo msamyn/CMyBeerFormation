@@ -19,13 +19,13 @@ export default function Beer({ beer, maxQuantity = 5 }) {
   const { name, description, imageUri, price } = beer;
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }} component="article">
       <CardMedia component="img" height="140" image={imageUri} alt={name} />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="h3">
           {name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" component="p">
           {description}
         </Typography>
       </CardContent>

@@ -1,6 +1,7 @@
 import responseToJson from "../responseToJson";
 
-const apiUrl = "//my-json-server.typicode.com/msamyn/CMyBeerFormation";
+const apiUrl = "https://my-json-server.typicode.com/msamyn/CMyBeerFormation";
+// const apiUrl = "//localhost:3001";
 
 export default function cMyBeerFetch(route, options = {}) {
   return () =>
