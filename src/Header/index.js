@@ -11,8 +11,11 @@ import {
 import { func } from "prop-types";
 import { ShoppingBasket } from "@mui/icons-material";
 import { Link } from "./styles";
+import { BasketContext } from "../contexts";
 
 export default function Header({ onToggleBasket = Function.prototype }) {
+  const { basketItemsCount } = BasketContext.useContext();
+
   const mainNavigation = [
     { path: "/", name: "Les bières" },
     { path: "/countdown", name: "Countdown" },
@@ -39,7 +42,7 @@ export default function Header({ onToggleBasket = Function.prototype }) {
             color="inherit"
             onClick={onToggleBasket}
           >
-            <Badge badgeContent={4} color="error">
+            <Badge badgeContent={basketItemsCount} color="error">
               <ShoppingBasket />
             </Badge>
           </IconButton>
