@@ -22,7 +22,7 @@ export default function HomeScreen() {
         <Grid container spacing={4} justifyContent="space-between">
           {beers.map((beer) => (
             <Grid key={beer.id} item xs={3}>
-              <Beer beer={beer} maxQuantity={Math.floor(Math.random() * 10)} />
+              <Beer beer={beer} maxQuantity={5} />
             </Grid>
           ))}
         </Grid>
