@@ -1,15 +1,18 @@
 import {
-  Button,
+  Badge,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   FormControl,
+  IconButton,
   InputLabel,
   MenuItem,
   Select,
   Typography,
 } from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
 import { number, string, shape } from "prop-types";
 import React from "react";
 import { BasketContext } from "../contexts";
@@ -18,7 +21,7 @@ import { useQuantity } from "../hooks";
 export default function Beer({ beer, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity("");
   const { name, description, imageUri, price, id } = beer;
-  const { addToBasket } = BasketContext.useContext();
+  const { addToBasket, basketItems } = BasketContext.useContext();
 
   return (
     <Card sx={{ maxWidth: 345 }} component="article">
@@ -44,16 +47,23 @@ export default function Beer({ beer, maxQuantity = 5 }) {
             disabled={maxQuantity === 0}
             sx={{ width: 120 }}
           >
-            {new Array(maxQuantity + 1).fill().map((_, i) => (
+            {new Array(maxQuantity).fill().map((_, i) => (
               <MenuItem key={i} value={i + 1}>
                 {`${i + 1} - ${((i + 1) * Number(price)).toFixed(2)}€`}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
-        <Button size="small" onClick={addToBasket(id, quantity)}>
-          🛒
-        </Button>
+        <IconButton
+          size="large"
+          aria-label="4 products in cart"
+          color="inherit"
+          onClick={addToBasket(id, quantity)}
+        >
+          <Badge badgeContent={basketItems[id] ?? 0} color="error">
+            <AddShoppingCartIcon />
+          </Badge>
+        </IconButton>
       </CardActions>
     </Card>
   );

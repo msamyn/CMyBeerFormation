@@ -12,7 +12,6 @@ const basketReducer = (state, { type, payload }) => {
     }
     case "removeFromBasket": {
       const { id } = payload;
-      console.log({ ...state, [id]: undefined });
       return omit([id], state);
     }
     case "add":
