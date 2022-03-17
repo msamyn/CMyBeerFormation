@@ -23,7 +23,7 @@ export default function Header({ onToggleBasket = Function.prototype }) {
 
   return (
     <AppBar position="sticky">
-      <Container maxWidth="xl">
+      <Container maxWidth="false">
         <Toolbar disableGutters>
           <Typography variant="h6" noWrap component="h1">
             🍻 CMyBeer
