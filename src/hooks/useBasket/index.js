@@ -1,15 +1,20 @@
+import { omit } from "ramda";
 import React from "react";
 
 const basketReducer = (state, { type, payload }) => {
   switch (type) {
-    case "addToBasket":
+    case "addToBasket": {
       const { id, count } = payload;
       return {
         ...state,
         [id]: state[id] === undefined ? count : state[id] + count,
       };
-    case "decrement":
-      return;
+    }
+    case "removeFromBasket": {
+      const { id } = payload;
+      console.log({ ...state, [id]: undefined });
+      return omit([id], state);
+    }
     case "add":
       return;
     case "del":
@@ -26,5 +31,9 @@ export default function useBasket() {
     dispatch({ type: "addToBasket", payload: { id, count } });
   };
 
-  return { basket, addToBasket };
+  const removeFromBasket = (id) => () => {
+    dispatch({ type: "removeFromBasket", payload: { id } });
+  };
+
+  return { basket, addToBasket, removeFromBasket };
 }

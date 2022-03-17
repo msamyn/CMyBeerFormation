@@ -8,7 +8,7 @@ const countItems = (subTotal, { quantity }) => subTotal + quantity;
 const BasketContext = React.createContext();
 
 const Provider = ({ children }) => {
-  const { basket, addToBasket } = useBasket();
+  const { basket, addToBasket, removeFromBasket } = useBasket();
 
   const { isLoading, beers } = useBeers();
 
@@ -26,6 +26,7 @@ const Provider = ({ children }) => {
     basketItemsCount,
     basketItems,
     addToBasket,
+    removeFromBasket,
   };
 
   return (

@@ -1,6 +1,7 @@
 import {
   Avatar,
   Divider,
+  IconButton,
   ListItem,
   ListItemAvatar,
   ListItemText,
@@ -10,13 +11,18 @@ import BasketItemPrice, {
   types as basketItemPriceTypes,
 } from "../BasketItemPrice";
 
+import { Delete } from "@mui/icons-material";
+import { BasketContext } from "../contexts";
+
 export default function BasketItem({
   name,
   imageUri,
   quantity,
   price,
   divider = true,
+  id,
 }) {
+  const { removeFromBasket } = BasketContext.useContext();
   return (
     <>
       <ListItem alignItems="flex-start">
@@ -31,7 +37,16 @@ export default function BasketItem({
           primary={name}
           secondary={<BasketItemPrice price={price} quantity={quantity} />}
         />
+        <IconButton
+          size="large"
+          aria-label="4 products in cart"
+          color="inherit"
+          onClick={removeFromBasket(id)}
+        >
+          <Delete />
+        </IconButton>
       </ListItem>
+
       {divider && <Divider variant="inset" component="li" />}
     </>
   );
