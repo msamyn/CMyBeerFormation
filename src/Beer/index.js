@@ -37,8 +37,8 @@ export default function Beer({ beer, maxQuantity = 5 }) {
       </CardContent>
       <CardActions>
         <FormControl sx={{ width: "100%" }}>
-          <Grid container spacing={2} justifyContent="space-between">
-            <Grid item>
+          <Grid container spacing={4}>
+            <Grid item xs={8}>
               <InputLabel id="quantity-label">Quantité</InputLabel>
               <Select
                 labelId="quantity-label"
@@ -48,7 +48,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
                 size="small"
                 variant="standard"
                 disabled={maxQuantity === 0}
-                sx={{ width: 120 }}
+                sx={{ width: "100%" }}
               >
                 {new Array(maxQuantity).fill().map((_, i) => (
                   <MenuItem key={i} value={i + 1}>
@@ -57,7 +57,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
                 ))}
               </Select>
             </Grid>
-            <Grid item>
+            <Grid item xs={4}>
               <IconButton
                 size="large"
                 aria-label="4 products in cart"
