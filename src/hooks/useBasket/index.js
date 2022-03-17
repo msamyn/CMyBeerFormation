@@ -27,7 +27,9 @@ export default function useBasket() {
   const [basket, dispatch] = React.useReducer(basketReducer, {});
 
   const addToBasket = (id, count) => () => {
-    dispatch({ type: "addToBasket", payload: { id, count } });
+    if (count !== 0) {
+      dispatch({ type: "addToBasket", payload: { id, count } });
+    }
   };
 
   const removeFromBasket = (id) => () => {

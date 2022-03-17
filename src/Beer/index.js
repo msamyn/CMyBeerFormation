@@ -1,10 +1,10 @@
 import {
   Badge,
   Card,
-  CardActions,
   CardContent,
   CardMedia,
   FormControl,
+  Grid,
   IconButton,
   InputLabel,
   MenuItem,
@@ -17,6 +17,7 @@ import { number, string, shape } from "prop-types";
 import React from "react";
 import { BasketContext } from "../contexts";
 import { useQuantity } from "../hooks";
+import { CardActions } from "./styles";
 
 export default function Beer({ beer, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity("");
@@ -35,35 +36,46 @@ export default function Beer({ beer, maxQuantity = 5 }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <FormControl>
-          <InputLabel id="quantity-label">Quantité</InputLabel>
-          <Select
-            labelId="quantity-label"
-            value={quantity}
-            label="Quantité"
-            onChange={handleChange}
-            size="small"
-            variant="standard"
-            disabled={maxQuantity === 0}
-            sx={{ width: 120 }}
-          >
-            {new Array(maxQuantity).fill().map((_, i) => (
-              <MenuItem key={i} value={i + 1}>
-                {`${i + 1} - ${((i + 1) * Number(price)).toFixed(2)}€`}
-              </MenuItem>
-            ))}
-          </Select>
+        <FormControl sx={{ width: "100%" }}>
+          <Grid container spacing={2} justifyContent="space-between">
+            <Grid item>
+              <InputLabel id="quantity-label">Quantité</InputLabel>
+              <Select
+                labelId="quantity-label"
+                value={quantity}
+                label="Quantité"
+                onChange={handleChange}
+                size="small"
+                variant="standard"
+                disabled={maxQuantity === 0}
+                sx={{ width: 120 }}
+              >
+                {new Array(maxQuantity).fill().map((_, i) => (
+                  <MenuItem key={i} value={i + 1}>
+                    {`${i + 1} - ${((i + 1) * Number(price)).toFixed(2)}€`}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Grid>
+            <Grid item>
+              <IconButton
+                size="large"
+                aria-label="4 products in cart"
+                color="inherit"
+                sx={{ background: "lightgray" }}
+                onClick={
+                  quantity !== ""
+                    ? addToBasket(id, quantity)
+                    : Function.prototype
+                }
+              >
+                <Badge badgeContent={basketItems[id] ?? 0} color="error">
+                  <AddShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </Grid>
+          </Grid>
         </FormControl>
-        <IconButton
-          size="large"
-          aria-label="4 products in cart"
-          color="inherit"
-          onClick={addToBasket(id, quantity)}
-        >
-          <Badge badgeContent={basketItems[id] ?? 0} color="error">
-            <AddShoppingCartIcon />
-          </Badge>
-        </IconButton>
       </CardActions>
     </Card>
   );

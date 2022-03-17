@@ -35,7 +35,9 @@ export default function BasketItem({
         </ListItemAvatar>
         <ListItemText
           primary={name}
-          secondary={<BasketItemPrice price={price} quantity={quantity} />}
+          secondary={
+            <BasketItemPrice price={price} quantity={Number(quantity)} />
+          }
         />
         <IconButton
           size="large"
