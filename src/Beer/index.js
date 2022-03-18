@@ -55,7 +55,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
               >
                 {new Array(maxQuantity).fill().map((_, i) => (
                   <MenuItem key={i} value={i + 1}>
-                    {`${i + 1} - ${formatCurrency((i + 1) * Number(price))}€`}
+                    {`${i + 1} - ${formatCurrency((i + 1) * Number(price))}`}
                   </MenuItem>
                 ))}
               </Select>
