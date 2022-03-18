@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import formatCurrency from "../formatCurrency";
 
 import { number, string, shape } from "prop-types";
 import React from "react";
@@ -23,6 +24,8 @@ export default function Beer({ beer, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity("");
   const { name, description, imageUri, price, id } = beer;
   const { addToBasket, basketItems } = BasketContext.useContext();
+
+  const count = basketItems?.find((b) => b.id === id)?.quantity ?? 0;
 
   return (
     <Card sx={{ maxWidth: 345 }} component="article">
@@ -52,7 +55,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
               >
                 {new Array(maxQuantity).fill().map((_, i) => (
                   <MenuItem key={i} value={i + 1}>
-                    {`${i + 1} - ${((i + 1) * Number(price)).toFixed(2)}€`}
+                    {`${i + 1} - ${formatCurrency((i + 1) * Number(price))}€`}
                   </MenuItem>
                 ))}
               </Select>
@@ -69,7 +72,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
                     : Function.prototype
                 }
               >
-                <Badge badgeContent={basketItems[id] ?? 0} color="error">
+                <Badge badgeContent={count} color="error">
                   <AddShoppingCartIcon />
                 </Badge>
               </IconButton>
