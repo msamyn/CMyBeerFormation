@@ -1,18 +1,23 @@
 import { omit } from "ramda";
 import React from "react";
+import { useLocalStorage } from "../useLocalStorage";
 
 const basketReducer = (state, { type, payload }) => {
   switch (type) {
     case "addToBasket": {
       const { id, count } = payload;
-      return {
+      const newState = {
         ...state,
         [id]: state[id] === undefined ? count : state[id] + count,
       };
+      setBasketStorageFunc(newState);
+      return newState;
     }
     case "removeFromBasket": {
       const { id } = payload;
-      return omit([id], state);
+      const newState = omit([id], state);
+      setBasketStorageFunc(newState);
+      return newState;
     }
     case "add":
       return;
@@ -23,8 +28,13 @@ const basketReducer = (state, { type, payload }) => {
   }
 };
 
+let setBasketStorageFunc = Function.prototype;
+
 export default function useBasket() {
-  const [basket, dispatch] = React.useReducer(basketReducer, {});
+  const [basketStorage, setBasketStorage] = useLocalStorage("basket", {});
+  const [basket, dispatch] = React.useReducer(basketReducer, basketStorage);
+
+  setBasketStorageFunc = (b) => setBasketStorage(b);
 
   const addToBasket = (id, count) => () => {
     if (count !== 0) {
