@@ -92,6 +92,9 @@ Object {
       "main": "#29b6f6",
     },
     "mode": "dark",
+    "palette": Object {
+      "main": "#FFO",
+    },
     "primary": Object {
       "contrastText": "rgba(0, 0, 0, 0.87)",
       "dark": "#42a5f5",
