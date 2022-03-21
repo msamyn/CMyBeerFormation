@@ -42,11 +42,11 @@ export default function Beer({ beer, maxQuantity = 5 }) {
         <FormControl sx={{ width: "100%" }}>
           <Grid container spacing={4}>
             <Grid item xs={8}>
-              <InputLabel id="quantity-label">Quantité</InputLabel>
+              <InputLabel id="quantity-label">Quantité à ajouter</InputLabel>
               <Select
                 labelId="quantity-label"
                 value={quantity}
-                label="Quantité"
+                label="Quantité à ajouter"
                 onChange={handleChange}
                 size="small"
                 variant="standard"
