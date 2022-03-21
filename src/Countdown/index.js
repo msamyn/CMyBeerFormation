@@ -9,9 +9,11 @@ export default function Countdown({ initialCount = 100, step = 1 }) {
 
   return (
     <>
-      <p className="countdown-number">{count}</p>
+      <a role="timer" aria-live="polite" className="countdown-number" href="/">
+        {count}
+      </a>
       <button className="countdown-button" onClick={decrement}>
-        ClickMe
+        Countdown
       </button>
       <button onClick={reset}>Reset</button>
     </>
