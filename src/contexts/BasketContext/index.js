@@ -18,8 +18,8 @@ const Provider = ({ children }) => {
         ?.filter(({ id }) => Object.keys(basket).includes(id))
         .map((beer) => ({ ...beer, quantity: basket[beer.id] }));
 
-  const basketItemsTotalAmount = basketItems.reduce(sumPrice, 0);
-  const basketItemsCount = basketItems.reduce(countItems, 0);
+  const basketItemsTotalAmount = basketItems?.reduce(sumPrice, 0) ?? 0;
+  const basketItemsCount = basketItems?.reduce(countItems, 0) ?? 0;
 
   const value = {
     basketItemsTotalAmount,
