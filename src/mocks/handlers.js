@@ -1,6 +1,6 @@
 import { rest } from "msw";
 
-const apiUrl = "//my-json-server.typicode.com/msamyn/CMyBeerFormation";
+const apiUrl = "https://my-json-server.typicode.com/msamyn/CMyBeerFormation";
 
 export const handlers = [
   // Handles a GET /user request
