@@ -67,7 +67,7 @@ export default function Beer({ beer, maxQuantity = 5 }) {
                 size="large"
                 aria-label="4 products in cart"
                 color="inherit"
-                sx={{ background: "lightgray" }}
+                sx={{ background: "gray" }}
                 onClick={
                   quantity !== ""
                     ? addToBasket(id, quantity)
