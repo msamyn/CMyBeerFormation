@@ -9,9 +9,9 @@ export default function Countdown({ initialCount = 100, step = 1 }) {
 
   return (
     <>
-      <a role="timer" aria-live="polite" className="countdown-number" href="/">
+      <p role="timer" aria-live="polite" className="countdown-number">
         {count}
-      </a>
+      </p>
       <button className="countdown-button" onClick={decrement}>
         Countdown
       </button>
