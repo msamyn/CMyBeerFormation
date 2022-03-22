@@ -11,7 +11,8 @@ export const List = styled(MuiList)({
 
 export const Total = styled(Box)(({ theme }) => ({
   margin: "1rem",
-  backgroundColor: theme.palette.grey[100],
+  backgroundColor: theme.palette.grey[600],
+
   borderRadius: theme.spacing(1),
   display: "flex",
   alignItems: "center",
