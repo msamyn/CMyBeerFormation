@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Basket from ".";
 import { BasketContext } from "../contexts";
 
-import theme from "../App/theme";
+import theme from "../ds/theme";
 
 export default {
   title: "Basket",
