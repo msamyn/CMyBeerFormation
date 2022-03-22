@@ -1,7 +1,8 @@
+import { sbOrganism } from "../testUtils";
 import Countdown from "./";
 
 export default {
-  title: "Countdown",
+  title: sbOrganism("Countdown"),
   component: Countdown,
 };
 

@@ -22,9 +22,11 @@ import { CardActions } from "./styles";
 
 export default function Beer({ beer, maxQuantity = 5 }) {
   const [quantity, handleChange] = useQuantity("");
-  const { name, description, imageUri, price, id } = beer;
+
   const { addToBasket, basketItems } = BasketContext.useContext();
 
+  if (!beer) return null;
+  const { name, description, imageUri, price, id } = beer;
   const count = basketItems?.find((b) => b.id === id)?.quantity ?? 0;
 
   return (

@@ -4,9 +4,10 @@ import Basket from ".";
 import { BasketContext } from "../contexts";
 
 import theme from "../ds/theme";
+import { sbDomain } from "../testUtils";
 
 export default {
-  title: "Basket",
+  title: sbDomain("Basket"),
   component: Basket,
 };
 
